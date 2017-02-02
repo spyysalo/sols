@@ -192,7 +192,7 @@ def parse_obo(f, limit_prefixes=None, include_nameless=False):
         elif re.match(r'^synonym:.*', l) and not skip_block:
             assert tid is not None
             assert name is not None
-            m = re.match(r'^synonym: "([^"]*)" ([A-Za-z_ ]*?) *\[.*\]\s*$', l)
+            m = re.match(r'^synonym: "((?:\\"|[^"])*)" ([A-Za-z_ ]*?) *\[.*\]\s*(?:\{.*\}\s*)?$', l)
             assert m is not None, "Error: failed to parse '%s'" % l
             synstr, syntype = m.groups()
             if synstr == "":
